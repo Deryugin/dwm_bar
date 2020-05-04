@@ -8,11 +8,7 @@
 
 dwm_keyboard () {
     printf "%s" "$SEP1"
-    if [ "$IDENTIFIER" = "unicode" ]; then
-        printf "⌨ %s" "$(setxkbmap -query | awk '/layout/{print $2}')"
-    else
-        printf "KEY %s" "$(setxkbmap -query | awk '/layout/{print $2}')"
-    fi
+    printf "%s" "$(setxkbmap -query | awk '/layout/{print $2}' | awk -F ',' '{ print $1 }')"
     printf "%s\n" "$SEP2"
 }
 
