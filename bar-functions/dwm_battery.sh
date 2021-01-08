@@ -20,6 +20,10 @@ dwm_battery () {
         printf "BAT %s%% %s" "$CHARGE" "$STATUS"
     fi
     printf "%s\n" "$SEP2"
+
+    if [ "10" -gt "$CHARGE" ]; then
+      notify-send -u critical Low battery!
+    fi
 }
 
 dwm_battery
